@@ -2,7 +2,7 @@
 repos:
   # Checagens básicas de arquivos
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-yaml
       - id: end-of-file-fixer
@@ -11,13 +11,13 @@ repos:
 
   # Detector de segredos (chaves, tokens, senhas)
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.21.2
+    rev: v8.30.0
     hooks:
       - id: gitleaks
 
   # Lint e formatação de Python
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.8.4
+    rev: v0.17.6
     hooks:
       - id: ruff
         args: [--fix]
