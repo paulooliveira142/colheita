@@ -1,0 +1,82 @@
+name: História
+description: Uma entrega de valor para alguém do negócio ou do time.
+title: "COL-000 "
+labels: ["historia"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Troque `COL-000` no título pelo próximo número livre do backlog.
+        Uma boa história cabe em uma sprint (até 8 pontos). Se for maior, quebre em duas.
+
+  - type: dropdown
+    id: fase
+    attributes:
+      label: Fase
+      options:
+        - Fase 1 · Fundação
+        - Fase 2 · Forma de trabalho
+        - Fase 3 · Infraestrutura como código
+        - Fase 4 · Ingestão em lote
+        - Fase 5 · Fontes externas e streaming
+        - Fase 6 · Transformação
+        - Fase 7 · Orquestração
+        - Fase 8 · Operação
+        - Fase 9 · Segurança e governança
+        - Fase 10 · Entrega
+    validations:
+      required: true
+
+  - type: dropdown
+    id: pontos
+    attributes:
+      label: Estimativa (pontos)
+      description: Tamanho relativo do esforço, na escala de Fibonacci.
+      options: ["1", "2", "3", "5", "8"]
+    validations:
+      required: true
+
+  - type: input
+    id: depende_de
+    attributes:
+      label: Depende de
+      placeholder: "COL-008, COL-011"
+
+  - type: textarea
+    id: historia
+    attributes:
+      label: História de usuário
+      value: |
+        Como <quem>, quero <o quê>, para <por quê>.
+    validations:
+      required: true
+
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto técnico
+      description: Recursos, nomes, caminhos, decisões já tomadas. Aponte riscos de custo e segurança.
+      placeholder: |
+        - Cloud Run job `...` executado com `sa-ingestao`
+        - Destino: `raw_....`, particionada por `data_ref`
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Critérios de aceite
+      description: Cada item precisa ser verificável (um comando, uma consulta, um teste).
+      value: |
+        - [ ]
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: fora_escopo
+    attributes:
+      label: Fora do escopo
+      placeholder: |
+        - Agendamento (COL-021)

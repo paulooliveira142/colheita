@@ -1,0 +1,7 @@
+# Padroniza fim de linha como LF no repositório
+* text=auto eol=lf
+
+# Arquivos binários: o Git não deve alterar
+*.png binary
+*.jpg binary
+*.parquet binary

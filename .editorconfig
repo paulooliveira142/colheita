@@ -1,0 +1,18 @@
+# Regras de formatação para todos os editores
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# Python usa 4 espaços (PEP 8)
+[*.py]
+indent_size = 4
+
+# No Markdown, dois espaços no fim da linha quebram a linha
+[*.md]
+trim_trailing_whitespace = false
