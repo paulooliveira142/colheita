@@ -1,0 +1,151 @@
+# =============================================================================
+# .gitignore do repositório colheita
+# Regra de ouro: credencial, state e ambiente local NUNCA entram no Git.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Credenciais e segredos
+# -----------------------------------------------------------------------------
+# Variáveis de ambiente locais (mantemos só o exemplo, sem valores reais)
+.env
+.env.*
+!.env.example
+
+# Chaves de service account e credenciais do gcloud
+# (no projeto usamos ADC + impersonation; nenhuma chave JSON deve existir aqui)
+*credentials*.json
+application_default_credentials.json
+*service-account*.json
+*-sa-key*.json
+*-key.json
+sa-*.json
+.gcloud/
+.config/gcloud/
+
+# Credencial que o CLI do Dataform cria com `dataform init-creds`
+.df-credentials.json
+
+# Chaves e certificados em geral
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+id_rsa*
+id_ed25519*
+
+# -----------------------------------------------------------------------------
+# Terraform
+# -----------------------------------------------------------------------------
+# Pasta de plugins e módulos baixados pelo `terraform init`
+**/.terraform/*
+
+# State: fica no bucket gs://colheita-<amb>-po14-tfstate, nunca no repositório
+*.tfstate
+*.tfstate.*
+
+# Logs de crash
+crash.log
+crash.*.log
+
+# Arquivos de plano salvos com `terraform plan -out=...` (podem conter segredos)
+*.tfplan
+tfplan
+*.plan
+
+# Variáveis locais ou sensíveis. Os .tfvars de dev/prd SEM segredo são versionados.
+*.local.tfvars
+*secret*.tfvars
+*.auto.tfvars.json
+
+# Sobrescritas locais
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI config local
+.terraformrc
+terraform.rc
+
+# ATENÇÃO: .terraform.lock.hcl DEVE ser versionado (trava as versões dos providers)
+
+# -----------------------------------------------------------------------------
+# Python
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+
+# Build e empacotamento
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Testes, cobertura e linters
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.ruff_cache/
+.mypy_cache/
+.tox/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# -----------------------------------------------------------------------------
+# Docker e Airflow local
+# -----------------------------------------------------------------------------
+# Sobrescrita local do compose (cada pessoa ajusta a sua)
+docker-compose.override.yml
+compose.override.yml
+
+# Pastas que o Airflow local gera em tempo de execução
+airflow/logs/
+airflow/plugins/__pycache__/
+airflow.db
+airflow-webserver.pid
+standalone_admin_password.txt
+
+# -----------------------------------------------------------------------------
+# Dataform / Node
+# -----------------------------------------------------------------------------
+node_modules/
+dataform/.df/
+
+# -----------------------------------------------------------------------------
+# Dados locais (arquivos gerados para teste não vão para o Git)
+# -----------------------------------------------------------------------------
+dados_locais/
+*.parquet
+*.jsonl
+*.csv
+# Exceção: amostras pequenas usadas nos testes
+!**/tests/fixtures/**
+
+# -----------------------------------------------------------------------------
+# Editores e sistema operacional
+# -----------------------------------------------------------------------------
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*~
+
+# Windows / WSL
+Thumbs.db
+desktop.ini
+*:Zone.Identifier
+
+# macOS
+.DS_Store

@@ -1,0 +1,95 @@
+name: Bug
+description: Algo que funcionava (ou deveria funcionar) e não funciona.
+title: "COL-000 [bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Antes de abrir, procure nas issues se o problema já foi registrado.
+        **Nunca cole credenciais, tokens ou dados pessoais reais nos logs abaixo.**
+
+  - type: dropdown
+    id: ambiente
+    attributes:
+      label: Ambiente
+      options:
+        - dev (colheita-dev-po14)
+        - prd (colheita-prd-po14)
+        - local
+    validations:
+      required: true
+
+  - type: dropdown
+    id: componente
+    attributes:
+      label: Componente
+      options:
+        - Terraform
+        - Ingestão (Cloud Run jobs)
+        - Streaming (Pub/Sub)
+        - Dataform
+        - Airflow
+        - Cloud Build (CI/CD)
+        - Painel
+        - Outro
+    validations:
+      required: true
+
+  - type: input
+    id: data_ref
+    attributes:
+      label: Data de referência afetada
+      placeholder: "2026-11-20"
+
+  - type: textarea
+    id: o_que_aconteceu
+    attributes:
+      label: O que aconteceu
+    validations:
+      required: true
+
+  - type: textarea
+    id: esperado
+    attributes:
+      label: O que era esperado
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduzir
+    attributes:
+      label: Como reproduzir
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs ou mensagem de erro
+      description: Cole só o trecho relevante. Vira bloco de código automaticamente.
+      render: shell
+
+  - type: dropdown
+    id: impacto
+    attributes:
+      label: Impacto
+      options:
+        - Alto · painel errado ou pipeline parado em prd
+        - Médio · atraso ou falha com contorno
+        - Baixo · incômodo, sem efeito nos dados
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Critérios de aceite da correção
+      value: |
+        - [ ] O cenário de reprodução não gera mais o erro
+        - [ ] Existe teste que pegaria esse bug
+        - [ ] Datas afetadas foram reprocessadas e conferidas (se houver)

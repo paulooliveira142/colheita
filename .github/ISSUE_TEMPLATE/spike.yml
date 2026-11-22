@@ -1,0 +1,67 @@
+name: Spike
+description: Investigação com tempo limitado. A entrega é conhecimento, não código de produção.
+title: "COL-000 Spike "
+labels: ["spike"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Um spike responde a uma pergunta e termina num registro de decisão (ADR) em `docs/adr/`.
+        Se o tempo acabar, pare e registre o que descobriu, mesmo sem resposta final.
+
+  - type: textarea
+    id: pergunta
+    attributes:
+      label: Pergunta a responder
+      placeholder: Vale usar CDC com Datastream no lugar de arquivos diários?
+    validations:
+      required: true
+
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto e motivação
+      description: Por que essa dúvida apareceu e qual decisão depende dela.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tempo
+    attributes:
+      label: Tempo máximo (timebox)
+      options:
+        - Meio dia
+        - 1 dia
+        - 2 dias
+    validations:
+      required: true
+
+  - type: textarea
+    id: abordagem
+    attributes:
+      label: Abordagem
+      description: O que você vai testar e onde (sempre em dev).
+      placeholder: |
+        - Criar Cloud SQL pequeno em dev
+        - Conectar Datastream ao BigQuery
+        - Medir latência e custo
+
+  - type: textarea
+    id: custo
+    attributes:
+      label: Risco de custo e limpeza
+      description: Quais recursos cobram enquanto existirem e quando serão destruídos.
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Critérios de aceite
+      value: |
+        - [ ] A pergunta foi respondida (ou foi registrado por que não deu)
+        - [ ] ADR em `docs/adr/` com: o que funcionou, custo observado, prós, contras e recomendação
+        - [ ] Todos os recursos criados no spike foram destruídos
+        - [ ] Cards de seguimento criados, se a recomendação for adotar
+    validations:
+      required: true
