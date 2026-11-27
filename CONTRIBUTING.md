@@ -12,6 +12,20 @@ Este guia descreve como o trabalho anda no repositório `colheita`: do card no b
 6. Abra o PR, preencha o template e mova o card para **Em revisão**.
 7. Depois da aprovação e do check verde, faça **squash merge** e apague a branch.
 
+## Definition of Ready
+- Objetivo e quem vai usar o dado
+- Exemplo ou amostra do dado
+- Critérios de aceite testáveis
+- Dependências e acessos mapeados
+- Estimativa feita
+
+## Definition of Done
+- Código integrado por PR revisado
+- CI verde
+- Validado em dev pelos critérios do card
+- README ou runbook atualizado
+- Alertas configurados, se houver pipeline novo
+
 ## Fluxo de branches
 
 Usamos **trunk-based development** com branches curtas:
